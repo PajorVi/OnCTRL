@@ -66,7 +66,7 @@ button:hover {
 
 .header_buttons {
     height: 100%;
-    width: 25%;
+    width: 40%;
     padding-right: 2.5rem;
     margin-left: 18.75rem;
 
@@ -91,7 +91,7 @@ button:hover {
 .banner{
     background-image: url('../assets/banner.png');
     width: 100%;
-    height: 50rem;
+    height: 600px;
     padding-top: 3.125rem;
     display: flex;
     flex-direction: column;
@@ -115,15 +115,18 @@ button:hover {
     width: 70%;
     margin: 0;
     padding-top: 6.25rem;
-    font-size: 50pt;
+    font-size: 3.125rem;
 }
 
 .banner_titulo span{
     width: 37.5rem;
-    font-size: 16pt;
+    font-size: 20px;
 }
 
 .button_cadastro {
+    display: flex;
+    justify-content: center;
+
     padding-bottom: 9.375rem;
     width: 18.75rem;
 }
@@ -166,6 +169,7 @@ button:hover {
     height: 12.5rem;
     padding-left: .625rem;
     padding-top: 3.75rem;
+    padding-bottom: 1.5625rem;
     background-color: #3D3C3C;
     border: .0625rem solid #CE0000;
 
@@ -181,6 +185,8 @@ button:hover {
 }
 
 #texto_influencia {
+    display: flex;
+    padding-bottom: 1.5625rem;
     height: 10.625rem;
 }
 
@@ -190,9 +196,17 @@ button:hover {
     width: 100%;
 }
 
+#texto_dev {
+    padding-bottom: 20px;
+}
+
+#texto_onu {
+    padding-bottom: 0;
+}
+
 #container_dev img {
     position: relative;
-    bottom: 3.125rem;
+    bottom: 2.5rem;
     right: .625rem;
     width: 15rem;
     height: 15rem;  
@@ -274,7 +288,7 @@ button:hover {
 
 .cadastro_container img {
     position: absolute;
-    right: 43.75rem;
+    right: 40.625rem;
     top: 6.25rem;
     width: 80%;
     height: 85%;
@@ -306,7 +320,7 @@ button:hover {
     justify-content: center;
     align-items: center;
 
-    gap: 3.125rem;
+    gap: 30px;
 }
 
 .cadastro_inputs input {
@@ -340,6 +354,6 @@ button:hover {
 #button_cadastrar {
     width: 30%;
     height: 3.125rem;
-    margin-top: 3.75rem;
-    font-size: 28pt;
+    margin-top: 30px;
+    font-size: 20pt;
 }
