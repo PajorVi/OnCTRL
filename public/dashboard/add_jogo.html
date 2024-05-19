@@ -12,7 +12,8 @@
     <title>Dashboard</title>
 </head>
 
-<body onload="exibirJogos()">
+<!-- onload="exibirJogos()" -->
+<body>
 
     <div class="header_left">
 
@@ -98,7 +99,7 @@
                     </div>
                 </div>
 
-                <button id="form_adicionar_button">
+                <button id="form_adicionar_button" onclick="adicionar()">
                     Adicionar
                 </button>
             </div>
@@ -107,3 +108,48 @@
     </div>
 
 </body>
+
+<script>
+
+function adicionar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+        var nomeVar = input_nome_jogo.value;
+        var generoVar = input_genero_jogo.value;
+        var descVar = input_desc_jogo.value;
+
+        var corpo = {
+            nomeJogo: nomeVar,
+            genero: generoVar,
+            descricao: descVar
+        }
+
+        fetch(`/jogos/adicionar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Jogo adicionado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.location = "/dashboard/mural.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+</script>
