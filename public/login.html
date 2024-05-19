@@ -33,7 +33,7 @@
         </ul>
 
         <div class="header_buttons">
-            <a href=""><button>Cadastro</button></a>
+            <a href="cadastro.html"><button>Cadastro</button></a>
         </div>
     </div>
 
@@ -43,33 +43,101 @@
 
         <div class="formulario">
 
-            <h1>Cadastro</h1>
+            <h1>Login</h1>
 
             <div class="cadastro_inputs">
+    
+               <input id="login_email" placeholder="Email">
 
-                <input id="cadastro_nome_usuario" placeholder="Nome de usuário">
-
-                <input id="cadastro_apelido" placeholder="Apelido">
-
-                <input id="cadastro_email" placeholder="Email">
-
-                <input id="cadastro_senha" placeholder="Senha">
-
-                <input id="cadastro_confirmacaoSenha" placeholder="Confirmação de senha">
-
-                <div class="checkbox">
-                    <input type="checkbox" id="checkbox"><span>Li e aceito os <u>termos e condições</u></span>
-                </div>
+                <input id="login_senha" placeholder="Senha">
 
             </div>
 
-            <button id="button_cadastrar">
-                Cadastrar
+            <button id="button_login" onclick="entrar()">
+                Login
             </button>
 
         </div>
     </div>
 
+    <div id="cardErro"></div>
+    <div id="div_erros_login"></div>
+
 </body>
 
 </html>
+
+<script>
+
+
+    function entrar() {
+        aguardar();
+
+        var emailVar = login_email.value;
+        var senhaVar = login_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuario/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta + "OK");
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.APELIDO_USUARIO = json.apelido;
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    
+                    setTimeout(function () {
+                        window.location = "../dashboard/dashboard.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
+
+</script>
+
+<script src="js/sessao.js"></script>
+<script src="js/alerta.js"></script>
