@@ -15,7 +15,7 @@ function adicionar(req, res) {
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        jogosModel.publicar(nome, genero, descricao, idUsuario)
+        jogosModel.adicionar(nome, genero, descricao, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
