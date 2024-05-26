@@ -1,9 +1,9 @@
 var jogosModel = require("../models/jogosModel");
 
 function adicionar(req, res) {
-    var nome = req.body.input_nome_jogo;
-    var genero = req.body.input_genero_jogo;
-    var descricao = req.body.input_desc_jogo;
+    var nome = req.body.nomeJogo;
+    var genero = req.body.genero;
+    var descricao = req.body.descricao;
     var idUsuario = req.params.idUsuario;
 
     if (nome == undefined) {
@@ -13,7 +13,7 @@ function adicionar(req, res) {
     } else if (descricao == undefined) {
         res.status(400).send("A descrição está indefinido!");
     } else if (idUsuario == undefined) {
-        res.status(403).send("O id do usuário está indefinido!");
+        res.status(400).send("A descrição está indefinido!");
     } else {
         jogosModel.adicionar(nome, genero, descricao, idUsuario)
             .then(

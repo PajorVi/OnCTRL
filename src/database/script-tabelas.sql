@@ -10,3 +10,15 @@ create table usuario (
     
     constraint pk_usuario primary key(id)
 );
+
+create table jogo (
+	id int,
+    nome varchar(45),
+    genero varchar(45),
+	descricao varchar(500),
+    dataAdd date,
+    fkUsuario int,
+    
+    constraint pk_jogo primary key(id),
+    constraint fk_usuario foreign key (fkUsuario) references usuario(id)
+);
