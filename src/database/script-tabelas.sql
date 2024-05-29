@@ -12,7 +12,7 @@ create table usuario (
 );
 
 create table jogo (
-	id int,
+	id int auto_increment,
     nome varchar(45),
     genero varchar(45),
 	descricao varchar(500),

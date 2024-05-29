@@ -9,6 +9,14 @@ function adicionar(nome, genero, descricao, idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function buscarJogosPorUsuario(idUsuario) {
+    var instrucaoSql = `SELECT * FROM jogo WHERE fkUsuario = ${idUsuario}`;
+
+    console.log("Executando a instrução SQL \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    adicionar
+    adicionar,
+    buscarJogosPorUsuario
 }

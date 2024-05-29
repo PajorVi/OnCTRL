@@ -1,4 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
+var jogosModel = require("../models/jogosModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -10,7 +11,8 @@ function autenticar(req, res) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
 
-        usuarioModel.autenticar(email, senha)
+        usuarioModel
+            .autenticar(email, senha)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
@@ -18,14 +20,24 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
+
                         if (resultadoAutenticar.length > 0) {
-                            res.json({
-                                id: resultadoAutenticar[0].id,
-                                nomeUsuario: resultadoAutenticar[0].nomeUsuario,
-                                apelido: resultadoAutenticar[0].apelido,
-                                email: resultadoAutenticar[0].email,
-                                senha: resultadoAutenticar[0].senha
-                            })
+                            jogosModel
+                                .buscarJogosPorUsuario(resultadoAutenticar[0].id)
+                                .then((resultadoJogos) => {
+                                    if (resultadoJogos.length > 0) {
+                                        res.json({
+                                            idUsuario: resultadoAutenticar[0].id,
+                                            nome: resultadoAutenticar[0].nomeUsuario,
+                                            apelido: resultadoAutenticar[0].apelido,
+                                            email: resultadoAutenticar[0].email,
+                                            senha: resultadoAutenticar[0].senha,
+                                            jogos: resultadoJogos
+                                        });
+                                    } else {
+                                        res.status(204).json({ jogos: [] });
+                                    }
+                                });
                         }
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
@@ -41,14 +53,6 @@ function autenticar(req, res) {
                 }
             );
     }
-}
-
-function listar(req, res) {
-    usuarioModel.listar().then(function (resultado) {
-        res.status(200).json(resultado);
-    }).catch(function (erro) {
-        res.status(500).json(erro.sqlMesage);
-    })
 }
 
 function cadastrar(req, res) {

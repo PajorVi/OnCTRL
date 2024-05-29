@@ -12,7 +12,7 @@
     <title>Dashboard</title>
 </head>
 
-<body>
+<body onload="buscarJogosUsuario()">
 
     <div class="header_left">
 
@@ -80,14 +80,14 @@
 
         <div class="button_add">
             <a href="add_jogo.html"><button>
-                Adicionar Jogo
-            </button></a>
+                    Adicionar Jogo
+                </button></a>
         </div>
 
         <div class="button_lista">
             <a href="cards.html"><button>
-                Lista de jogos
-            </button></a>
+                    Lista de jogos
+                </button></a>
         </div>
 
         <div class="grafico">
@@ -99,3 +99,44 @@
 </body>
 
 </html>
+
+<script>
+
+    function buscarJogosUsuario() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/jogos/buscarJogosPorUsuario/${idUsuario}`)
+            .then(function (resposta) {
+                console.log("ESTOU NO THEN DO buscarJogosPorUsuario() da dash!")
+
+                if (resposta.ok) {
+                    console.log(resposta + "OK");
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.JOGOS_USUARIO = JSON.stringify(json.jogos);
+
+                        setTimeout(function () {
+                            window.location = "../dashboard/dashboard.html";
+                        }, 1000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+        return false;
+
+    }
+</script>

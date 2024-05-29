@@ -107,9 +107,10 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
                     sessionStorage.APELIDO_USUARIO = json.apelido;
                     sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.JOGOS_USUARIO = JSON.stringify(json.jogos);
                     
                     setTimeout(function () {
                         window.location = "../dashboard/dashboard.html";

@@ -31,6 +31,24 @@ function adicionar(req, res) {
     }
 }
 
+function buscarJogosPorUsuario(req, res) {
+
+    var idUsuario = req.params.idUsuario;
+    
+    jogosModel
+        .buscarJogosPorUsuario(idUsuario)
+        .then((resultadoJogos) => {
+            if (resultadoJogos.length > 0) {
+                res.json({
+                    jogos: resultadoJogos
+                });
+            } else {
+                res.status(204).json({ jogos: [] });
+            }
+        });
+}
+
 module.exports = {
-    adicionar
+    adicionar,
+    buscarJogosPorUsuario
 }
