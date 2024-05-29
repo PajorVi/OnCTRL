@@ -22,22 +22,15 @@ function autenticar(req, res) {
                         console.log(resultadoAutenticar);
 
                         if (resultadoAutenticar.length > 0) {
-                            jogosModel
-                                .buscarJogosPorUsuario(resultadoAutenticar[0].id)
-                                .then((resultadoJogos) => {
-                                    if (resultadoJogos.length > 0) {
-                                        res.json({
-                                            idUsuario: resultadoAutenticar[0].id,
-                                            nome: resultadoAutenticar[0].nomeUsuario,
-                                            apelido: resultadoAutenticar[0].apelido,
-                                            email: resultadoAutenticar[0].email,
-                                            senha: resultadoAutenticar[0].senha,
-                                            jogos: resultadoJogos
-                                        });
-                                    } else {
-                                        res.status(204).json({ jogos: [] });
-                                    }
-                                });
+                            
+                            res.json({
+                                idUsuario: resultadoAutenticar[0].id,
+                                nome: resultadoAutenticar[0].nomeUsuario,
+                                apelido: resultadoAutenticar[0].apelido,
+                                email: resultadoAutenticar[0].email,
+                                senha: resultadoAutenticar[0].senha
+                            });
+
                         }
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");

@@ -12,7 +12,7 @@
     <title>Dashboard</title>
 </head>
 
-<body onload="exibirJogos()">
+<body onload="exibirJogos(), buscarJogosUsuario()">
 
     <div class="header_left">
 
@@ -79,13 +79,15 @@
     <div class="dash_container">
 
         <div class="button_add">
-            <button>
-                Adicionar Jogo
-            </button>
+            <a href="add_jogo.html">
+                <button>
+                    Adicionar Jogo
+                </button>
+            </a>
         </div>
 
         <div class="card_container">
-            <div class="card" id="card_jogo"></div>
+            <div class="card" id="cardJogos"></div>
         </div>
     </div>
 </body>
@@ -94,22 +96,47 @@
 
 <script>
 
-    
+    function buscarJogosUsuario() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/jogos/buscarJogosPorUsuario/${idUsuario}`)
+            .then(function (resposta) {
+                console.log("ESTOU NO THEN DO buscarJogosPorUsuario() da dash!")
+
+                if (resposta.ok) {
+                    console.log(resposta + "OK");
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.JOGOS_USUARIO = JSON.stringify(json.jogos);
+                    });
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+        return false;
+
+    }
 
     function exibirJogos() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
+        JSON.parse(sessionStorage.JOGOS_USUARIO).forEach(item => {
+            document.getElementById("cardJogos").innerHTML += `
+                    <div class="cardJogos">
                         <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
+                            <h1>${item.nome}</h1>
                         </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
+                    </div>      
                     `
         });
     }

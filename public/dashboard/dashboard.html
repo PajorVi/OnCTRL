@@ -116,11 +116,6 @@
                         console.log(json);
                         console.log(JSON.stringify(json));
                         sessionStorage.JOGOS_USUARIO = JSON.stringify(json.jogos);
-
-                        setTimeout(function () {
-                            window.location = "../dashboard/dashboard.html";
-                        }, 1000); // apenas para exibir o loading
-
                     });
 
                 } else {
