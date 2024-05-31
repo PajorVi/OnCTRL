@@ -16,7 +16,7 @@
 
     <div class="header">
 
-        <a href="">            
+        <a href="">
             <h1>OnCTRL</h1>
         </a>
 
@@ -46,8 +46,8 @@
             <h1>Login</h1>
 
             <div class="cadastro_inputs">
-    
-               <input id="login_email" placeholder="Email">
+
+                <input id="login_email" placeholder="Email">
 
                 <input id="login_senha" placeholder="Senha">
 
@@ -69,9 +69,7 @@
 
 <script>
 
-
     function entrar() {
-        aguardar();
 
         var emailVar = login_email.value;
         var senhaVar = login_senha.value;
@@ -82,9 +80,6 @@
             finalizarAguardar();
             return false;
         }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -110,7 +105,7 @@
                     sessionStorage.ID_USUARIO = json.idUsuario;
                     sessionStorage.APELIDO_USUARIO = json.apelido;
                     sessionStorage.EMAIL_USUARIO = json.email;
-                    
+
                     setTimeout(function () {
                         window.location = "../dashboard/dashboard.html";
                     }, 1000); // apenas para exibir o loading
@@ -133,10 +128,6 @@
 
         return false;
     }
-
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
 
 </script>
 

@@ -71,7 +71,6 @@ button:hover {
     margin-left: 18.75rem;
 
     display: flex;
-    justify-content: center;
     align-items: center;
     justify-content: space-evenly;
 }
@@ -85,7 +84,6 @@ button:hover {
     height: 2.1875rem;
     width: 11.25rem;
 }
-
 
 /*-----------------BANNER---------------*/
 .banner{
