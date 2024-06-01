@@ -45,22 +45,22 @@
 
       <h1>Cadastro</h1>
 
-      <div class="cadastro_inputs">
+      <div class="inputs">
 
         <input id="cadastro_nome_usuario" placeholder="Nome de usuário">
-        <span id="mensagem_erro_nomeUsuario"></span>
+        <span class="mensagem_erro" id="mensagem_erro_nomeUsuario"></span>
 
         <input id="cadastro_apelido" placeholder="Apelido">
-        <span id="mensagem_erro_apelido"></span>
+        <span class="mensagem_erro" id="mensagem_erro_apelido"></span>
 
         <input id="cadastro_email" placeholder="Email">
-        <span id="mensagem_erro_email"></span>
+        <span class="mensagem_erro" id="mensagem_erro_email"></span>
 
         <input id="cadastro_senha" placeholder="Senha">
-        <span id="mensagem_erro_senha"></span>
+        <span class="mensagem_erro" id="mensagem_erro_senha"></span>
 
         <input id="cadastro_confirmacaoSenha" placeholder="Confirmação de senha">
-        <span id="mensagem_erro_confirmSenha"></span>
+        <span class="mensagem_erro" id="mensagem_erro_confirmSenha"></span>
 
       </div>
 
@@ -207,7 +207,6 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";

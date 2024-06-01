@@ -45,19 +45,21 @@
 
             <h1>Login</h1>
 
-            <div class="cadastro_inputs">
+            <div class="inputs">
 
                 <input id="login_email" placeholder="Email">
-                <div id="mensagem_erro_email"></div>
+                <div id="mensagem_erro_email_login" class="mensagem_erro"></div>
 
                 <input id="login_senha" placeholder="Senha">
-                <div id="mensagem_erro_senha"></div>
+                <div id="mensagem_erro_senha_login" class="mensagem_erro"></div>
 
             </div>
 
             <button id="button_login" onclick="entrar()">
                 Login
             </button>
+
+            <div class="mensagem_erro" id="mensagem_erro_campos_invalidos"></div>
 
         </div>
     </div>
@@ -72,11 +74,11 @@
 
         var emailVar = login_email.value;
         var senhaVar = login_senha.value;
-        let erroPreencheCampos = 'Preencha o cmpo para continuar'
+        let erroPreencheCampos = 'Preencha o campo para continuar'
 
         if (emailVar == "" || senhaVar == "") {
-            mensagem_erro_email.innerHTML = erroPreencheCampos;
-            mensagem_erro_senha.innerHTML = erroPreencheCampos;
+            mensagem_erro_email_login.innerHTML = erroPreencheCampos;
+            mensagem_erro_senha_login.innerHTML = erroPreencheCampos;
             
             return false;
         }
@@ -114,11 +116,12 @@
 
             } else {
 
-                console.log("Houve um erro ao tentar realizar o login!");
+                mensagem_erro_campos_invalidos.innerHTML = `
+                Houve um erro ao efetuar o login Email ou senha inválidos
+                `
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
                 });
             }
 

@@ -182,6 +182,10 @@ button:hover {
     border-radius: 1.875rem 0 1.875rem 0;
 }
 
+#texto_proposito {
+    height: 150px;
+}
+
 #texto_influencia {
     display: flex;
     padding-bottom: 1.5625rem;
@@ -218,6 +222,88 @@ button:hover {
     height: 15rem;
 }
 
+/*--------------CARROSSEL-------------*/
+
+.carrossel_container {
+    width: 100%;
+    height: 500px;
+    background-color: #282828;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.carrossel_container button {
+    margin: 10px;
+}
+
+.itens_carrossel_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    /* background-color: aqua; */
+}
+
+.item_carrossel {
+    background-color: #3D3C3C;
+    border: 1px solid #CE0000;
+    border-radius: 0 15px 0 15px;
+    width: 450px;
+    height: 80%;
+    overflow: hidden;
+    position: relative;
+    margin-right: 50px;
+}
+
+#shadow {
+    background-image: url("../assets/Shadow_bg.jpg");
+    background-position: 50% 0;
+}
+
+#darkSouls {
+    background-image: url("../assets/DS_bg.jpeg");
+    background-size: 800px;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+}
+
+#minecraft {
+    background-image: url("../assets/mine_bg.png");
+    background-size: 450px;
+    background-position: 20% 30%;
+}
+
+#persona {
+    background-image: url("../assets/P3_bg.jpeg");
+    background-size: 750px;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+}
+
+.fundo_item_carrossel {
+    width: 100%;
+    height: 100%;
+    opacity: 50%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.fundo_item_carrossel h1{
+    margin: 0;
+    width: 30%;
+}
+
+.seta_carrossel {
+    background-color: transparent;
+    height: 50px;
+    width: 50px
+}
 
 /*-----------------FOOTER----------------*/
 .footer {
@@ -311,17 +397,17 @@ button:hover {
     text-align: center;
 }
 
-.cadastro_inputs {
+.inputs {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    gap: 30px;
+    gap: 40px;
 }
 
-.cadastro_inputs input {
+.inputs input {
     width: 70%;
     height: 2.1875rem;
 
@@ -354,4 +440,49 @@ button:hover {
     height: 3.125rem;
     margin-top: 30px;
     font-size: 20pt;
+}
+
+#button_login {
+    width: 30%;
+    height: 3.125rem;
+    margin-top: 30px;
+    font-size: 20pt;
+    box-shadow: 1px 1px 2px black;
+}
+
+.mensagem_erro {
+    color: red;
+    position: absolute;
+}
+
+#mensagem_erro_nomeUsuario {
+    bottom: 390px;
+}
+
+#mensagem_erro_apelido {
+    bottom: 312px;
+}
+
+#mensagem_erro_email {
+    bottom: 232px;
+}
+
+#mensagem_erro_senha {
+    bottom: 137px;
+}
+
+#mensagem_erro_confirmSenha {
+    bottom: 77px;
+}
+
+#mensagem_erro_email_login {
+    bottom: 275px;
+}
+
+#mensagem_erro_senha_login {
+    bottom: 195px;
+}
+
+#mensagem_erro_campos_invalidos {
+    top: 500px;
 }
