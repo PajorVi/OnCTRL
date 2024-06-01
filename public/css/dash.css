@@ -270,3 +270,26 @@ button:hover {
     border: none;
     border-radius: .625rem 0 .625rem 0;
 }
+
+.modalBackGround {
+    background-color: #000;
+    display: none;
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 50%;
+}
+
+.modal {
+    background-color: #CE0000;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+}

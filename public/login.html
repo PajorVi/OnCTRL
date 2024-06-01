@@ -48,8 +48,10 @@
             <div class="cadastro_inputs">
 
                 <input id="login_email" placeholder="Email">
+                <div id="mensagem_erro_email"></div>
 
                 <input id="login_senha" placeholder="Senha">
+                <div id="mensagem_erro_senha"></div>
 
             </div>
 
@@ -59,9 +61,6 @@
 
         </div>
     </div>
-
-    <div id="cardErro"></div>
-    <div id="div_erros_login"></div>
 
 </body>
 
@@ -73,11 +72,12 @@
 
         var emailVar = login_email.value;
         var senhaVar = login_senha.value;
+        let erroPreencheCampos = 'Preencha o cmpo para continuar'
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            mensagem_erro_email.innerHTML = erroPreencheCampos;
+            mensagem_erro_senha.innerHTML = erroPreencheCampos;
+            
             return false;
         }
 

@@ -12,7 +12,7 @@
     <title>Dashboard</title>
 </head>
 
-<body onload=" buscarJogosUsuario()">
+<body>
 
     <div class="header">
 
@@ -36,7 +36,7 @@
             <a href="cadastro.html"><img src="../assets/user_icon.png"></a>
         </div>
     </div>
-    
+
     <div class="dash_container">
 
         <div class="button_add">
@@ -47,14 +47,18 @@
             </a>
         </div>
 
-        <div class="card_container" id="card_container">
-        </div>
+        <div class="card_container" id="card_container"></div>
     </div>
+
+    <div class="modalBackGround" id="modalBackGround"></div>
+    <div class="modal" id="modal"></div>
 </body>
 
 </html>
 
 <script>
+
+    window.onload = buscarJogosUsuario();
 
     function buscarJogosUsuario() {
         var idUsuario = sessionStorage.ID_USUARIO;
@@ -71,9 +75,7 @@
                         console.log(JSON.stringify(json));
                         sessionStorage.JOGOS_USUARIO = JSON.stringify(json.jogos);
                     });
-
-                    exibirJogos()
-
+                    exibirJogos();
                 } else {
 
                     console.log("Houve um erro ao tentar realizar o login!");
@@ -94,13 +96,38 @@
     function exibirJogos() {
         JSON.parse(sessionStorage.JOGOS_USUARIO).forEach(item => {
             document.getElementById("card_container").innerHTML += `
-                    <div class="card">
-                        <div class="title-aquario">
+                    <div class="card" id="${item.nome}">
+                        <div class="title-jogo">
                             <h1>${item.nome}</h1>
                         </div>
                     </div>      
                     `;
         });
+        habilitarModal();
+    }
+
+    function habilitarModal() {
+
+        JSON.parse(sessionStorage.JOGOS_USUARIO).forEach(item => {
+            document.getElementById(`${item.nome}`).addEventListener("click", function () {
+                modal.innerHTML = `
+                <div class="close">
+                    <button onclick="desabilitarModal()">X</button>
+                 </div>
+                <h1>${item.nome}</h1>
+                <p>${item.genero}</p>
+                <span>
+                    ${item.descricao}
+                </span>`
+                modal.style.display = 'flex';
+                modalBackGround.style.display = 'block';
+            })
+        });
+    }
+
+    function desabilitarModal() {
+        modal.style.display = 'none';
+        modalBackGround.style.display = 'none';
     }
 
 </script>
