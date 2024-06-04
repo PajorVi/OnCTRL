@@ -28,10 +28,10 @@
             <a href="index.html">
                 <li>home</li>
             </a>
-            <a href="">
+            <a href="#influencia">
                 <li>sobre</li>
             </a>
-            <a href="">
+            <a href="./dashboard/dashboard.html">
                 <li>biblioteca</li>
             </a>
         </ul>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="button_cadastro">
-            <button>cadastre-se</button>
+            <a href="cadastro.html"><button>cadastre-se</button></a>
         </div>
 
     </div>
@@ -64,7 +64,7 @@
 
             <div class="card" id="card_proposito">
 
-                <h1 class="titulo_card">O propósito do site</h1>
+                <h1 class="titulo_card" id="influencia">O propósito do site</h1>
 
                 <div class="texto_card" id="texto_proposito">
 
@@ -106,38 +106,91 @@
 
         </div>
 
+        <h1 class="titulo_carrossel">Alguns jogos que influenciaram este projeto</h1>
+
         <div class="carrossel_container" data-aos="fade-up">
 
             <button class="seta_carrossel" id="seta_esquerda" onclick="btnDeslizarEsquerda()"><img
                     src="./assets/angle-left-solid.svg" alt=""></button>
             <div class="slider on" id="itens_carrossel_container">
 
-                <div class="item_carrossel" id="shadow">
-                    <h1>Shadow of The Colossus</h1>
+                <div class="item_carrossel" id="shadow" onmouseover="ativarDescShadow()"
+                    onmouseout="desativarDescShadow()">
+                    <h1 class="titulo_jogo" id="titulo_shadow">Shadow of The Colossus</h1>
+                    <span class="desc_jogo" id="desc_shadow">
+                        Este jogo sendo um dos jogos que mais joguei, com certeza me ensinou desde pequeno a superar
+                        diversos desafios e me mostrou que com o tempo até mesmo os maiores seres e por mais difíceis
+                        que pareçam ser de superar, podem ser derrotados e com o tempo, devido a prática e muitas horas
+                        de treino, hoje não se mostra mais um desafio, e sim o contrário, acabou virando um jogo de
+                        conforto e passatempo.
+                    </span>
+
                 </div>
 
-                <div class="item_carrossel" id="darkSouls">
-                    <h1>Dark Souls</h1>
+                <div class="item_carrossel" id="darkSouls" onmouseover="ativarDescDs()" onmouseout="desativarDescDs()">
+                    <h1 class="titulo_jogo" id="titulo_ds">Dark Souls</h1>
+                    <span class="desc_jogo" id="desc_ds">
+                        Dark Souls é um jogo que pode passar diversas lições para aqueles que se aventuram pelo jogo.
+                        Devido a sua dificuldade elevada requer resiliência, foco, muita paciência e estratégia, coisas
+                        que comecei a conquistar também devido a este jogo, pois a cada nível um novo inimigo (não
+                        necessariamente maior) mais difícil é posto em seu caminho, tendo diversas maneiras e elementos
+                        diferentes do jogo que podem ser usados a seu favor para derrotá-los. Com certeza um de meus
+                        jogos favoritos, e cada vez que jogo me sinto desafiado de uma maneira diferente. Uma boa pedida
+                        para quem deseja se mostrar capaz e superar desafios.
+                    </span>
                 </div>
 
-                <div class="item_carrossel" id="minecraft">
-                    <h1>Minecraft</h1>
+                <div class="item_carrossel" id="minecraft" onmouseover="ativarDescMine()"
+                    onmouseout="desativarDescMine()">
+                    <h1 class="titulo_jogo" id="titulo_mine">Minecraft</h1>
+                    <span class="desc_jogo" id="desc_mine">Aposto que muitos tem o que falar sobre este título em
+                        específico, mas minha experiência com este jogo vem desde youtubers e suas mais diversas
+                        aventuras e historias até minhas próprias histórias e mundos criativos de minha autoria. Tenho
+                        diversas memórias deste jogo com parentes, amigos e sozinho, sendo este um jogo na maioria das
+                        vezes que traz uma certa paz e conforto(até você acabar sendo explodido por um creeper) e nos
+                        instigando a criar obras e construções cada vez mais criativa.</span>
                 </div>
 
             </div>
 
             <div class="slider" id="itens_carrossel_container">
 
-                <div class="item_carrossel" id="persona">
-                    <h1>Persona 3</h1>
+                <div class="item_carrossel" id="persona" onmouseover="ativarDescPersona()"
+                    onmouseout="desativarDescPersona()">
+                    <h1 class="titulo_jogo" id="titulo_persona">Persona 3</h1>
+                    <span class="desc_jogo" id="desc_persona">
+                        Persona além do complexo sistema de RPG e batalhas empolgantes por trás deste jogo, me mostrou
+                        ao longo de sua jornada a importância de termos laços, e de como eles nos fortalecem, como os
+                        laços que criamos podem nos mover a termos atitudes reveladoras e superarmos muitas coisas. Este
+                        jogo se baseia no quão forte sua amizade é com as pessoas ao redor, e quanto mais unido você é
+                        com as pessoas, mais forte você fica e mais pode compartilhar com eles. Com certeza um jogo com
+                        uma história emocionante.
+                    </span>
                 </div>
 
-                <div class="item_carrossel" id="gow">
-                    <h1>God of war (2018)</h1>
+                <div class="item_carrossel" id="gow" onmouseover="ativarDescGow()" onmouseout="desativarDescGow()">
+                    <h1 class="titulo_jogo" id="titulo_gow">God of war (2018)</h1>
+                    <span class="desc_jogo" id="desc_gow">
+                        Após jogar todos os jogos da saga, eu pelo menos, me acostumei a ver o anti-herói sendo um
+                        monstro bruto e sem receio de usar a força e o ódio para conquistar tudo, mas ao chegar neste
+                        nível da saga, descobrimos através da trama e da relação do protagonista com seu filho que a
+                        força bruta não é a única saída, e que sozinhos a vida pode ser mais amarga e sem cor. Aprendi
+                        muito assistindo ao desenvolvimento do personagem durante o jogo, tendo tanto uma visão dele
+                        quanto de seu filho, que é o principal motivo de sua drástica mudança de um estado de ira
+                        constante, para um homem sábio e astuto.
+                    </span>
                 </div>
 
-                <div class="item_carrossel" id="tlou">
-                        <h1>The last of us</h1>
+                <div class="item_carrossel" id="tlou" onmouseover="ativarDescTlou()" onmouseout="desativarDescTlou()">
+                    <h1 class="titulo_jogo" id="titulo_tlou">The last of us</h1>
+                    <span class="desc_jogo" id="desc_tlou">
+                        Semelhante a God Of War, este jogo também trás uma visão de um homem, amargurado por seu passado
+                        se tornar alguém mais preocupado e romper esta casca por conta de uma jovem a quem ele se apega
+                        como uma filha. Mas esta obra nos trás uma visão mais real e brutal da coisa, e mostra em certos
+                        momentos que mesmo em um momento de caos absoluto e em meio a diversas tragédias, podemos ter um
+                        pouco de paz ao lado das pessoas que são importantes para nós. Com certeza um jogo que necessita
+                        de um coração forte.
+                    </span>
                 </div>
 
             </div>
@@ -174,7 +227,7 @@
 
             <div class="card">
 
-                <h1 class="titulo_card">A influência dos jogos no dia a dia do gamer (visão do dev)</h1>
+                <h1 class="titulo_card">Desenvolvimento sustentável da ONU</h1>
 
                 <div class="texto_card" id="texto_onu">
                     <img src="assets/ONU 17.jpg">
@@ -220,14 +273,18 @@
     const nextBtn = document.getElementById("seta_direita");
     const prevBtn = document.getElementById("seta_esquerda");
     const itensCarrossel = document.querySelectorAll(".itensCarrossel");
-    const idsJogos = {
-        shadow: document.getElementById("shadow"),
-        darkSouls: document.getElementById("darkSouls"),
-        minecraft: document.getElementById("minecraft"),
-        persona: document.getElementById("persona"),
-        gow: document.getElementById("gow"),
-        tlou: document.getElementById("tlou"),
-    }
+
+    const tituloJogo = document.getElementById("titulo_jogo");
+    const descJogo = document.querySelectorAll(".desc_jogo")
+
+    // let jogos = {
+    //     shadow: document.getElementById("shadow"),
+    //     darkSouls: document.getElementById("darkSouls"),
+    //     minecraft: document.getElementById("minecraft"),
+    //     persona: document.getElementById("persona"),
+    //     gow: document.getElementById("gow"),
+    //     tlou: document.getElementById("tlou"),
+    // }
 
     let slideAtual = 0;
 
@@ -239,10 +296,10 @@
         slides[slideAtual].classList.add('on');
     };
 
-    function ativarAnim() {
-        slides[slideAtual].style.animation = 'nxt_slide';
-        slides[slideAtual].style.animationDuration = '200';
-    }
+    // function ativarAnim() {
+    //     slides[slideAtual].style.animation = 'nxt_slide';
+    //     slides[slideAtual].style.animationDuration = '200';
+    // }
 
     function nextSlide() {
         desabilitarSlider();
@@ -254,6 +311,85 @@
         habilitarSlider();
     }
 
+    function prevSlider() {
+        desabilitarSlider();
+        if (slideAtual == 0) {
+            slideAtual = slides.length - 1;
+        } else {
+            slideAtual++;
+        }
+        habilitarSlider();
+    }
+
     nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlider);
+
+    /*----------HOVER-------------*/
+
+    function ativarDescShadow() {
+
+        titulo_shadow.style.display = 'none';
+        desc_shadow.style.display = 'block';
+
+    }
+    function desativarDescShadow() {
+        titulo_shadow.style.display = 'block';
+        desc_shadow.style.display = 'none';
+    }
+
+    function ativarDescDs() {
+        titulo_ds.style.display = 'none';
+        desc_ds.style.display = 'block';
+    }
+
+    function desativarDescDs() {
+        titulo_ds.style.display = 'block';
+        desc_ds.style.display = 'none';
+    }
+
+    function ativarDescMine() {
+        titulo_mine.style.display = 'none';
+        desc_mine.style.display = 'block';
+    }
+
+    function desativarDescMine() {
+        titulo_mine.style.display = 'block';
+        desc_mine.style.display = 'none';
+    }
+
+    function ativarDescPersona() {
+        titulo_persona.style.display = 'none';
+        desc_persona.style.display = 'block';
+    }
+
+    function desativarDescPersona() {
+        titulo_persona.style.display = 'block';
+        desc_persona.style.display = 'none';
+    }
+
+    function desativarDescPersona() {
+        titulo_persona.style.display = 'block';
+        desc_persona.style.display = 'none';
+    }
+
+    function ativarDescGow() {
+        titulo_gow.style.display = 'none';
+        desc_gow.style.display = 'block';
+    }
+
+    function desativarDescGow() {
+        titulo_gow.style.display = 'block';
+        desc_gow.style.display = 'none';
+    }
+
+    function ativarDescTlou() {
+        titulo_tlou.style.display = 'none';
+        desc_tlou.style.display = 'block';
+    }
+
+    function desativarDescTlou() {
+        titulo_tlou.style.display = 'block';
+        desc_tlou.style.display = 'none';
+    }
 
 </script>

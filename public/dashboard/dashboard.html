@@ -8,34 +8,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/sessao.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 </head>
 
-<body>
+<body onload="validarSessao(), obterDadosGrafico(idUsuario), ola()">
 
     <div class="header">
 
-        <a href="">
+        <a href="../index.html">
             <h1>OnCTRL</h1>
         </a>
 
         <ul class="navbar">
-            <a href="">
+            <a href="../index.html">
                 <li>home</li>
             </a>
-            <a href="">
+            <a href="../index.html">
                 <li>sobre</li>
             </a>
             <a href="">
-                <li>feed</li>
+                <li>biblioteca</li>
             </a>
         </ul>
 
         <div class="header_buttons">
-            <a href="cadastro.html"><img src="../assets/user_icon.png"></a>
+            <button onclick="limparSessao()">Sair</button>
         </div>
     </div>
 
@@ -46,6 +47,8 @@
                     Adicionar Jogo
                 </button></a>
         </div>
+
+        <div id="titulo_dash"></div>
 
         <div class="button_lista">
             <a href="cards.html"><button>
@@ -70,7 +73,14 @@
     let proximaAtualizacao;
 
     var idUsuario = sessionStorage.ID_USUARIO;
-    window.onload = obterDadosGrafico(idUsuario);
+
+    function ola() {
+        let apelido = sessionStorage.APELIDO_USUARIO;
+
+        titulo_dash.innerHTML = `
+        <span>Olá ${apelido}!</span> 
+        <span>Vamos ver quantos jogos ja jogou ?</span>`
+    }
 
     function obterDadosGrafico(idUsuario) {
 

@@ -6,35 +6,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <script src="../js/sessao.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 </head>
 
-<!-- onload="exibirJogos()" -->
-<body>
+<body onload="validarSessao()">
 
     <div class="header">
 
-        <a href="">
+        <a href="../index.html">
             <h1>OnCTRL</h1>
         </a>
 
         <ul class="navbar">
-            <a href="">
+            <a href="../index.html">
                 <li>home</li>
             </a>
-            <a href="">
+            <a href="../index.html">
                 <li>sobre</li>
             </a>
-            <a href="">
-                <li>feed</li>
+            <a href="dashboard.html">
+                <li>biblioteca</li>
             </a>
         </ul>
 
         <div class="header_buttons">
-            <a href="cadastro.html"><img src="../assets/user_icon.png"></a>
+            <button onclick="limparSessao()">Sair</button>
         </div>
     </div>
 

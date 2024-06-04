@@ -14,7 +14,7 @@ button {
     font-size: 14pt;
     background-color: #CE0000;
     border: none;
-    border-radius: .625rem 0 .625rem 0;
+    border-radius: .625rem 0 .625rem 0; 
 }
 
 a {
@@ -83,6 +83,7 @@ button:hover {
 .header_buttons button{
     height: 2.1875rem;
     width: 11.25rem;
+    box-shadow: 1px 1px 1px black;
 }
 
 /*-----------------BANNER---------------*/
@@ -133,6 +134,7 @@ button:hover {
     height: 5rem;
     font-size: 20pt;
     font-weight: 500;
+    box-shadow: 1px 1px 1px blackA;
 }
 
 /*-----------------TELA DA HOMEPAGE----------------*/
@@ -170,6 +172,7 @@ button:hover {
     padding-bottom: 1.5625rem;
     background-color: #3D3C3C;
     border: .0625rem solid #CE0000;
+    box-shadow: 1px 1px 2px black ;
 
     display: flex;
     flex-direction: row;
@@ -224,6 +227,10 @@ button:hover {
 
 /*--------------CARROSSEL-------------*/
 
+.titulo_carrossel {
+    text-align: center;
+}
+
 .carrossel_container {
     width: 100%;
     height: 500px;
@@ -231,6 +238,9 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-top: 1px solid #CE0000;
+    border-bottom: 1px solid #CE0000;
+    box-shadow: 1px 1px 2px black;
 }
 
 .carrossel_container button {
@@ -246,7 +256,6 @@ button:hover {
     justify-content: space-around;
     opacity: 0;
     position: absolute;
-    transition: opacity 1s;
 }
 
 .on {
@@ -274,14 +283,15 @@ button:hover {
     width: 30%;
 }
 
+.item_carrossel:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+
 #shadow {
     background-image:   linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url("../assets/Shadow_bg.jpg");
     background-position: 50% 0;
-}
-
-#shadow:hover {
-    transform: scale(1.2);
-    transition: 0.5s;
 }
 
 #darkSouls {
@@ -334,10 +344,36 @@ button:hover {
     width: 50px
 }
 
+.desc_jogo {
+    display: none;
+    text-align: start;
+    text-indent: 20px;
+    margin: 10px;
+}
+
+
+@keyframes fadeOut {
+    0% {
+        opacty: 100%;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacty: 0;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
 /*-----------------FOOTER----------------*/
 .footer {
     background-color: #3D3C3C;
-    border-bottom: .0625rem solid #CE0000;
+    border-top: .0625rem solid #CE0000;
     padding: .625rem;
 
     display: flex;
@@ -469,6 +505,7 @@ button:hover {
     height: 3.125rem;
     margin-top: 30px;
     font-size: 20pt;
+    box-shadow: 1px 1px 1px black;
 }
 
 #button_login {
