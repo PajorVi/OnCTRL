@@ -110,25 +110,18 @@
 
             <button class="seta_carrossel" id="seta_esquerda" onclick="btnDeslizarEsquerda()"><img
                     src="./assets/angle-left-solid.svg" alt=""></button>
-
             <div class="slider on" id="itens_carrossel_container">
 
                 <div class="item_carrossel" id="shadow">
-                    <div class="fundo_item_carrossel">
-                        <h1>Shadow of The Colossus</h1>
-                    </div>
+                    <h1>Shadow of The Colossus</h1>
                 </div>
 
                 <div class="item_carrossel" id="darkSouls">
-                    <div class="fundo_item_carrossel">
-                        <h1>Dark Souls</h1>
-                    </div>
+                    <h1>Dark Souls</h1>
                 </div>
 
                 <div class="item_carrossel" id="minecraft">
-                    <div class="fundo_item_carrossel">
-                        <h1>Minecraft</h1>
-                    </div>
+                    <h1>Minecraft</h1>
                 </div>
 
             </div>
@@ -136,21 +129,15 @@
             <div class="slider" id="itens_carrossel_container">
 
                 <div class="item_carrossel" id="persona">
-                    <div class="fundo_item_carrossel">
-                        <h1>Persona 3</h1>
-                    </div>
+                    <h1>Persona 3</h1>
                 </div>
 
                 <div class="item_carrossel" id="gow">
-                    <div class="fundo_item_carrossel">
-                        <h1>God of war (2018)</h1>
-                    </div>
+                    <h1>God of war (2018)</h1>
                 </div>
 
                 <div class="item_carrossel" id="tlou">
-                    <div class="fundo_item_carrossel">
                         <h1>The last of us</h1>
-                    </div>
                 </div>
 
             </div>
@@ -232,20 +219,30 @@
     const slides = document.querySelectorAll(".slider");
     const nextBtn = document.getElementById("seta_direita");
     const prevBtn = document.getElementById("seta_esquerda");
+    const itensCarrossel = document.querySelectorAll(".itensCarrossel");
+    const idsJogos = {
+        shadow: document.getElementById("shadow"),
+        darkSouls: document.getElementById("darkSouls"),
+        minecraft: document.getElementById("minecraft"),
+        persona: document.getElementById("persona"),
+        gow: document.getElementById("gow"),
+        tlou: document.getElementById("tlou"),
+    }
 
     let slideAtual = 0;
 
     function desabilitarSlider() {
-        slides[slideAtual].style.animation = 'nxt_slide';
-        slides[slideAtual].style.animationDuration = '200';
-
         slides.forEach(item => item.classList.remove('on'));
-
     }
 
     function habilitarSlider() {
         slides[slideAtual].classList.add('on');
     };
+
+    function ativarAnim() {
+        slides[slideAtual].style.animation = 'nxt_slide';
+        slides[slideAtual].style.animationDuration = '200';
+    }
 
     function nextSlide() {
         desabilitarSlider();
@@ -254,7 +251,7 @@
         } else {
             slideAtual++;
         }
-        setTimeout(habilitarSlider(), 1200);
+        habilitarSlider();
     }
 
     nextBtn.addEventListener('click', nextSlide);

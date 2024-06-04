@@ -241,17 +241,17 @@ button:hover {
     width: 90%;
     left: 6%;
     height: 100%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-around;
-    overflow: hidden;
     opacity: 0;
     position: absolute;
+    transition: opacity 1s;
 }
-
 
 .on {
     opacity: 1;
+    display: flex;
 }
 
 .item_carrossel {
@@ -263,40 +263,54 @@ button:hover {
     overflow: hidden;
     position: relative;
     margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_carrossel h1 {
+    text-align: center;
+    margin: 0;
+    width: 30%;
 }
 
 #shadow {
-    background-image: url("../assets/Shadow_bg.jpg");
+    background-image:   linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url("../assets/Shadow_bg.jpg");
     background-position: 50% 0;
 }
 
+#shadow:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
 #darkSouls {
-    background-image: url("../assets/DS_bg.jpeg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url("../assets/DS_bg.jpeg");
     background-size: 800px;
     background-repeat: no-repeat;
     background-position: 50% 0;
 }
 
 #minecraft {
-    background-image: url("../assets/mine_bg.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url("../assets/mine_bg.png");
     background-size: 450px;
     background-position: 20% 30%;
 }
 
 #persona {
-    background-image: url("../assets/P3_bg.jpeg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url("../assets/P3_bg.jpeg");
     background-size: 750px;
     background-repeat: no-repeat;
     background-position: 50% 0;
 }
 
 #gow {
-    background-image: url("../assets/GOW_bg.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url("../assets/GOW_bg.jpg");
     background-position: 30% 20%;
 }
 
 #tlou {
-    background-image: url("../assets/tlou_bg.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url("../assets/tlou_bg.jpg");
     background-position: 50%;
     background-size: 200%;
 }
@@ -312,11 +326,6 @@ button:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-.fundo_item_carrossel h1{
-    margin: 0;
-    width: 30%;
 }
 
 .seta_carrossel {
