@@ -108,9 +108,10 @@
 
         <div class="carrossel_container" data-aos="fade-up">
 
-            <button class="seta_carrossel" id="seta_esquerda" onclick="btnDeslizarEsquerda()"><img src="./assets/angle-left-solid.svg" alt=""></button>
+            <button class="seta_carrossel" id="seta_esquerda" onclick="btnDeslizarEsquerda()"><img
+                    src="./assets/angle-left-solid.svg" alt=""></button>
 
-            <div class="itens_carrossel_container" id="itens_carrossel_container">
+            <div class="slider on" id="itens_carrossel_container">
 
                 <div class="item_carrossel" id="shadow">
                     <div class="fundo_item_carrossel">
@@ -130,11 +131,27 @@
                     </div>
                 </div>
 
-                <!-- <div class="item_carrossel" id="persona">
+            </div>
+
+            <div class="slider" id="itens_carrossel_container">
+
+                <div class="item_carrossel" id="persona">
                     <div class="fundo_item_carrossel">
                         <h1>Persona 3</h1>
                     </div>
-                </div> -->
+                </div>
+
+                <div class="item_carrossel" id="gow">
+                    <div class="fundo_item_carrossel">
+                        <h1>God of war (2018)</h1>
+                    </div>
+                </div>
+
+                <div class="item_carrossel" id="tlou">
+                    <div class="fundo_item_carrossel">
+                        <h1>The last of us</h1>
+                    </div>
+                </div>
 
             </div>
 
@@ -210,3 +227,36 @@
 <script src="./js/index.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init();</script>
+
+<script>
+    const slides = document.querySelectorAll(".slider");
+    const nextBtn = document.getElementById("seta_direita");
+    const prevBtn = document.getElementById("seta_esquerda");
+
+    let slideAtual = 0;
+
+    function desabilitarSlider() {
+        slides[slideAtual].style.animation = 'nxt_slide';
+        slides[slideAtual].style.animationDuration = '200';
+
+        slides.forEach(item => item.classList.remove('on'));
+
+    }
+
+    function habilitarSlider() {
+        slides[slideAtual].classList.add('on');
+    };
+
+    function nextSlide() {
+        desabilitarSlider();
+        if (slideAtual == slides.length - 1) {
+            slideAtual = 0;
+        } else {
+            slideAtual++;
+        }
+        setTimeout(habilitarSlider(), 1200);
+    }
+
+    nextBtn.addEventListener('click', nextSlide);
+
+</script>

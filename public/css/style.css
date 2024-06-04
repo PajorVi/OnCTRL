@@ -230,21 +230,28 @@ button:hover {
     background-color: #282828;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .carrossel_container button {
     margin: 10px;
 }
 
-.itens_carrossel_container {
-    width: 100%;
+.slider{
+    width: 90%;
+    left: 6%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     overflow: hidden;
-    /* background-color: aqua; */
+    opacity: 0;
+    position: absolute;
+}
+
+
+.on {
+    opacity: 1;
 }
 
 .item_carrossel {
@@ -282,6 +289,19 @@ button:hover {
     background-repeat: no-repeat;
     background-position: 50% 0;
 }
+
+#gow {
+    background-image: url("../assets/GOW_bg.jpg");
+    background-position: 30% 20%;
+}
+
+#tlou {
+    background-image: url("../assets/tlou_bg.jpg");
+    background-position: 50%;
+    background-size: 200%;
+}
+
+
 
 .fundo_item_carrossel {
     width: 100%;
@@ -485,4 +505,18 @@ button:hover {
 
 #mensagem_erro_campos_invalidos {
     top: 500px;
+}
+
+/*---------------ANIMAÇÕES-----------*/
+
+@keyframes nxt_slide {
+    0% {
+        right: 0;
+        opacity: 100%;
+    }
+
+    100% {
+        right: 50%;
+        opacity: 0;
+    }
 }
