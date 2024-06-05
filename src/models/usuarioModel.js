@@ -9,6 +9,13 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSql);
 }
 
+function buscarPorUsuario(email) {
+    var instrucaoSql = `SELECT * FROM usuario WHERE email = '${email}'`;
+
+    return database.executar(instrucaoSql);
+}
+
+
 function cadastrar(nomeUsuario, apelido, email, senha) {
     var instrucao = `
         insert into usuario (nomeUsuario, apelido, email, senha) values ('${nomeUsuario}', '${apelido}', '${email}', '${senha}');
@@ -18,6 +25,7 @@ function cadastrar(nomeUsuario, apelido, email, senha) {
 }
 
 module.exports = {
+    buscarPorUsuario,
     cadastrar,
-    autenticar
+    autenticar,
 }

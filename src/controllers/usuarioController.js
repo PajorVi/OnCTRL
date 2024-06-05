@@ -64,22 +64,31 @@ function cadastrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined");
     } else {
-        usuarioModel.cadastrar(nomeUsuario, apelido, email, senha)
-            .then(function (resposta) {
-                res.status(200).send("Cadastro realizado com sucesso");
-            }).catch(function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizae o cadastro! Erro: ",
-                    erro.sqlMessage
+
+        usuarioModel.buscarPorUsuario(email).then((resultado) => {
+            if (resultado.length > 0) {
+              res
+                .status(401)
+                .json({mensagem: `Um usuário com o email ${email} ja foi cadastrado!`});
+            } else {
+                usuarioModel.cadastrar(nomeUsuario, apelido, email, senha)
+                .then(function (resposta) {
+                    res.status(200).send("Cadastro realizado com sucesso");
+                }).catch(function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizae o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMesage);
+                }
                 );
-                res.status(500).json(erro.sqlMesage);
             }
-            );
+          });
+        }
+
+        
     }
-
-
-}
 
 module.exports = {
     autenticar,

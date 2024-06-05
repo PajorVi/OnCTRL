@@ -29,14 +29,25 @@ app.use("/jogos", jogosRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
-    ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
-    ##   ##  ##       ##  ##            ## ##     ####      ##      ####             ##  ##     ##         ##  
-    ##   ##  ##       ##  ##            ##  ##   ##  ##     ##     ##  ##            ##  ##     ##        ##   
-    ## # ##  ####     #####    ######   ##  ##   ######     ##     ######   ######   ##  ##     ##       ##    
-    #######  ##       ##  ##            ##  ##   ##  ##     ##     ##  ##            ##  ##     ##      ##     
-    ### ###  ##       ##  ##            ## ##    ##  ##     ##     ##  ##             ####      ##     ##      
-    ##   ##  ######   #####             ####     ##  ##     ##     ##  ##              ##      ####    ######  
-    \n\n\n                                                                                                 
+                                                                                                                             
+                                                                                                                             
+    OOOOOOOOO                               CCCCCCCCCCCCCTTTTTTTTTTTTTTTTTTTTTTTRRRRRRRRRRRRRRRRR   LLLLLLLLLLL             
+    OO:::::::::OO                          CCC::::::::::::CT:::::::::::::::::::::TR::::::::::::::::R  L:::::::::L             
+  OO:::::::::::::OO                      CC:::::::::::::::CT:::::::::::::::::::::TR::::::RRRRRR:::::R L:::::::::L             
+ O:::::::OOO:::::::O                    C:::::CCCCCCCC::::CT:::::TT:::::::TT:::::TRR:::::R     R:::::RLL:::::::LL             
+ O::::::O   O::::::Onnnn  nnnnnnnn     C:::::C       CCCCCCTTTTTT  T:::::T  TTTTTT  R::::R     R:::::R  L:::::L               
+ O:::::O     O:::::On:::nn::::::::nn  C:::::C                      T:::::T          R::::R     R:::::R  L:::::L               
+ O:::::O     O:::::On::::::::::::::nn C:::::C                      T:::::T          R::::RRRRRR:::::R   L:::::L               
+ O:::::O     O:::::Onn:::::::::::::::nC:::::C                      T:::::T          R:::::::::::::RR    L:::::L               
+ O:::::O     O:::::O  n:::::nnnn:::::nC:::::C                      T:::::T          R::::RRRRRR:::::R   L:::::L               
+ O:::::O     O:::::O  n::::n    n::::nC:::::C                      T:::::T          R::::R     R:::::R  L:::::L               
+ O:::::O     O:::::O  n::::n    n::::nC:::::C                      T:::::T          R::::R     R:::::R  L:::::L               
+ O::::::O   O::::::O  n::::n    n::::n C:::::C       CCCCCC        T:::::T          R::::R     R:::::R  L:::::L         LLLLLL
+ O:::::::OOO:::::::O  n::::n    n::::n  C:::::CCCCCCCC::::C      TT:::::::TT      RR:::::R     R:::::RLL:::::::LLLLLLLLL:::::L
+  OO:::::::::::::OO   n::::n    n::::n   CC:::::::::::::::C      T:::::::::T      R::::::R     R:::::RL::::::::::::::::::::::L
+    OO:::::::::OO     n::::n    n::::n     CCC::::::::::::C      T:::::::::T      R::::::R     R:::::RL::::::::::::::::::::::L
+      OOOOOOOOO       nnnnnn    nnnnnn        CCCCCCCCCCCCC      TTTTTTTTTTT      RRRRRRRR     RRRRRRRLLLLLLLLLLLLLLLLLLLLLLLL
+      
     Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar .: http://${HOST_APP}:${PORTA_APP} :. \n\n
     Você está rodando sua aplicação em ambiente de .:${process.env.AMBIENTE_PROCESSO}:. \n\n
     \tSe .:desenvolvimento:. você está se conectando ao banco local. \n

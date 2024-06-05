@@ -140,8 +140,8 @@
 
     if (
       senha.length < 8 ||
-      regexMaiuscula.test(senha) == -1 ||
-      regexMinuscula.test(senha) == -1
+      !regexMaiuscula.test(senha)||
+      !regexMinuscula.test(senha)
     ) {
       mensagem_erro_senha.innerHTML = 'A senha deve conter pelo menos 8 caracteres, além de pelo menos um número e uma letra maiúscula e uma minuscula';
       cadastro_senha.style.border = '1px solid red';
@@ -214,6 +214,12 @@
           setTimeout(() => {
             window.location = "login.html";
           }, "2000");
+        } else if(resposta.status == 401) {
+
+          console.log("ja existe um usuario com este email");
+          mensagem_erro.style.color = 'red';
+          mensagem_erro.innerHTML = 'Um usuário com este email já foi cadastrado!'
+
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
