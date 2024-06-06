@@ -5,7 +5,9 @@ function validarSessao() {
 
     if (email == null && nome == null) {
         window.location = "../login.html";
+        sessao = false;
     }
+
 }
 
 function limparSessao() {

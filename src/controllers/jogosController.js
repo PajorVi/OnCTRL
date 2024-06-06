@@ -69,8 +69,28 @@ function buscarUltimosJogos(req, res) {
     });
 }
 
+function maisJogados(req, res) {
+
+    var idUsuario = req.params.idUsuario;
+
+    jogosModel.maisJogados(idUsuario).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+            console.log("cheguei no controller");
+            console.log("achei esses dados" + resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado");
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("houve um erro ao buscar os generos mais jogados do usuário");
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 module.exports = {
     adicionar,
     buscarJogosPorUsuario,
-    buscarUltimosJogos
+    buscarUltimosJogos,
+    maisJogados,
 }

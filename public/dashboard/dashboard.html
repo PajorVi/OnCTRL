@@ -15,7 +15,7 @@
     <title>Dashboard</title>
 </head>
 
-<body onload="validarSessao(), obterDadosGrafico(idUsuario), ola()">
+<body onload="validarSessao()">
 
     <div class="header">
 
@@ -56,6 +56,10 @@
                 </button></a>
         </div>
 
+        <div class="mais_jogados" id="mais_jogados"></div>
+
+        <div class="total_jogados" id="total_jogados"></div>
+
         <div class="grafico">
 
             <canvas id="myChartCanvas"></canvas>
@@ -71,8 +75,11 @@
 <script>
 
     let proximaAtualizacao;
-
     var idUsuario = sessionStorage.ID_USUARIO;
+
+
+    window.onload = obterDadosGrafico(idUsuario), ola(), maisJogados(), buscarJogosUsuario();
+
 
     function ola() {
         let apelido = sessionStorage.APELIDO_USUARIO;
@@ -81,7 +88,7 @@
         <span>Olá ${apelido}!</span> 
         <span>Vamos ver quantos jogos ja jogou ?</span>`
     }
-
+    
     function obterDadosGrafico(idUsuario) {
 
         if (proximaAtualizacao != undefined) {
@@ -105,7 +112,6 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
-
 
     function plotarGrafico(resposta, idUsuario) {
 
@@ -157,7 +163,71 @@
             config
         );
 
-        // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
     }
+
+    function maisJogados() {
+
+        let idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/jogos/maisJogados/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos dos mais jogados: ${JSON.stringify(resposta)}`);
+                    maisJogados = document.getElementById("mais_jogados");
+
+                    maisJogados.innerHTML = `<span id="mensagem_favorito">Seu gênero favorito é: </span>
+                    <span id="genero">${resposta[0].genero}</span>
+                    `;
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function buscarJogosUsuario() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/jogos/buscarJogosPorUsuario/${idUsuario}`)
+            .then(function (resposta) {
+                console.log("ESTOU NO THEN DO buscarJogosPorUsuario() da dash!")
+
+                if (resposta.ok) {
+                    console.log(resposta + "OK");
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.JOGOS_USUARIO = JSON.stringify(json.jogos);
+
+                        const totalJogados = document.getElementById("total_jogados");
+                        let totalJogos = json.jogos.length;
+
+                        totalJogados.innerHTML = `
+                        <span class="mensagem_total">Você jogou um total de</span> 
+                        <span id="numero_jogos"> ${totalJogos} </span> 
+                        <span class="mensagem_total">jogos</span>`;
+                    });
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+        return false;
+
+    }
+
 
 </script>

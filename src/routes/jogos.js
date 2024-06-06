@@ -15,4 +15,8 @@ router.get("/ultimos/:idUsuario", function (req, res) {
     jogosController.buscarUltimosJogos(req, res);
 });
 
+router.get("/maisJogados/:idUsuario", function(req, res) {
+    jogosController.maisJogados(req, res)
+});
+
 module.exports = router;

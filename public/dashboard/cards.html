@@ -50,7 +50,13 @@
             </a>
         </div>
 
-        <div class="card_container" id="card_container"></div>
+
+        <div class="card_container" id="card_container">
+            <div class="mensagem_sem_cards" id="mensagem_sem_cards">
+                <h1>Você ainda não possui nem um jogo</h1>
+                <span>Comece inserindo um jogo!</span>
+            </div>
+        </div>
     </div>
 
     <div class="modalBackGround" id="modalBackGround"></div>
@@ -78,7 +84,9 @@
                         console.log(JSON.stringify(json));
                         sessionStorage.JOGOS_USUARIO = JSON.stringify(json.jogos);
                     });
-                    exibirJogos();
+                    if(resposta.status != 204) {
+                        exibirJogos();
+                    }
                 } else {
 
                     console.log("Houve um erro ao tentar realizar o login!");
@@ -97,6 +105,21 @@
     }
 
     function exibirJogos() {
+        // let jogosUsuario = sessionStorage.JOGOS_USUARIO;
+        // const divMensagemSemJogos = document.getElementById("mensagem_sem_cards");
+
+        // if(jogosUsuario.length == 0) {
+        //     divMensagemSemJogos.style.display = 'flex';
+        //     divMensagemSemJogos.innerHTML = `
+        //     <h1> Você ainda não possui jogos </h1>
+        //     <h2>Adicione jogos para começar</h2>`;
+        // }
+
+        const cardContainer = document.getElementById("card_container");
+        const mensagemSemCards = document.getElementById("mensagem_sem_cards");
+
+        cardContainer.removeChild(mensagemSemCards);
+
         JSON.parse(sessionStorage.JOGOS_USUARIO).forEach(item => {
             document.getElementById("card_container").innerHTML += `
                     <div class="card" id="${item.nome}">

@@ -29,8 +29,24 @@ function buscarUltimosJogos(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function maisJogados(idUsuario) {
+    var instrucaoSql = `
+    select
+    genero, 
+    count(genero) quantidade
+    from jogo
+    where fkUsuario = ${idUsuario} 
+    group by genero
+    order by quantidade desc
+    limit 1; 
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     adicionar,
     buscarJogosPorUsuario,
-    buscarUltimosJogos
+    buscarUltimosJogos,
+    maisJogados,
 }
