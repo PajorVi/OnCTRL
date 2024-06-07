@@ -15,6 +15,7 @@ button {
     background-color: #CE0000;
     border: none;
     border-radius: .625rem 0 .625rem 0; 
+    cursor: pointer;
 }
 
 a {
